@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.bootcss.com/angular.js/1.2.5/angular.js"></script>  
+</head>
+<body ng-app="myNoteApp" ng-controller="myNoteCtrl">
 
-<body>
+<h2>我的笔记</h2>
 
-<div ng-app="">
-  <p>在输入框中尝试输入：</p>
-  <p>姓名：<input type="text" ng-model="name"></p>
-  <p ng-bind="name"></p>
-</div>
 
-<script src="https://cdn.bootcss.com/angular.js/1.2.5/angular.js"></script>
+<textarea ng-model="message" cols="40" rows="10"></textarea>
+
+<p>
+<button ng-click="save()">保存</button>
+<button ng-click="clear()">清除</button>
+</p>
+
+<p>剩余字数: <span ng-bind="left()"></span></p>
+
+<script >
+var app = angular.module("myNoteApp", []); 
+app.controller("myNoteCtrl", function($scope) {
+    $scope.message = "";
+    $scope.left = function() {
+        return 100 - $scope.message.length;
+    };
+    $scope.clear = function() {
+        $scope.message = '';
+    };
+    $scope.save = function() {
+        alert($scope.message);
+    };
+});
+</script>
+
+
 </body>
 </html>

@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="utf-8">
+<style>
+div {
+  transition: all linear 0.5s;
+  background-color: lightblue;
+  height: 100px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
 
-<body>
+.ng-hide {
+  height: 0;
+  width: 0;
+  background-color: transparent;
+  top:-200px;
+  left: 200px;
+}
 
-<div ng-app="">
-  <p>在输入框中尝试输入：</p>
-  <p>姓名：<input type="text" ng-model="name"></p>
-  <p ng-bind="name"></p>
-</div>
+</style>
+<script src="https://cdn.bootcss.com/angular.js/1.2.5/angular.js"></script>  
+<script src="https://cdn.bootcss.com/angular.js/1.2.5/angular-animate.min.js"></script>
+</head>
+<body ng-app="ngAnimate">
 
-<script src="https://cdn.bootcss.com/angular.js/1.2.5/angular.js"></script>
+<h1>隐藏 DIV: <input type="checkbox" ng-model="myCheck"></h1>
+
+<div ng-hide="myCheck"></div>
+
 </body>
 </html>
